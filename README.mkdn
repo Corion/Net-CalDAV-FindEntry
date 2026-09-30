@@ -1,0 +1,28 @@
+
+[![Windows](https://github.com/Corion/Net-CalDAV-FindEntry/workflows/windows/badge.svg)](https://github.com/Corion/Net-CalDAV-FindEntry/actions?query=workflow%3Awindows)
+[![MacOS](https://github.com/Corion/Net-CalDAV-FindEntry/workflows/macos/badge.svg)](https://github.com/Corion/Net-CalDAV-FindEntry/actions?query=workflow%3Amacos)
+[![Linux](https://github.com/Corion/Net-CalDAV-FindEntry/workflows/linux/badge.svg)](https://github.com/Corion/Net-CalDAV-FindEntry/actions?query=workflow%3Alinux)
+
+# NAME
+
+Net::CalDAV::FindEntry - find calendar entries overlapping a timespan
+
+# SYNOPSIS
+
+    use 5.020;
+    my $cal = Net::CalDAV::FindEntry->new(
+        user         => 'AzureDiamond',
+        password     => 'hunter2',
+        calendar_url => 'https://example.com/calendar/',
+    );
+    if( 0 ) {
+        $cal->ua->verify_SSL(0);
+    }
+    my @relevant_events = $cal->get_events(
+        after    => '2026-09-01T09:00:00',
+        before   => '2026-09-01T16:00:00',
+        calendar => 'Work'
+    );
+    for ( sort { $a->{start} cmp $b->{start} } @relevant_events) {
+        say(join( "-", $_->{start}, $_->{title} ));
+    }
