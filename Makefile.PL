@@ -52,6 +52,7 @@ my %module = (
         'Carp'             => '0',
         'Exporter'         => 5,
         'File::Spec'       => '0',
+        'File::XDG'        => '0', # for convenience config file finding
         'Getopt::Long'     => '0',
         'Moo'              => '2',
         'Net::CalDAVTalk'  => '0',

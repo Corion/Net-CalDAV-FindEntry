@@ -8,6 +8,7 @@ use YAML::Tiny;
 use File::Spec;
 use Net::CalDAV::FindEntry;
 use Net::CalDAV::Utils;
+use File::XDG;
 
 GetOptions(
     'user|u=s'     => \my $user,
@@ -20,6 +21,9 @@ GetOptions(
     'mtime=s'      => \my $mtime_file, # maybe we want another tool for that?!
     'guess=s'      => \my $ts_str,
     'unique'       => \my $needs_unique,
+    'closest'      => \my $output_closest,
+    # Maybe have a switch to simply look at every timestamp given in @ARGV
+    # as a single timestamp instead of start-end
 
     'duration=s'   => \my $duration,
 );
@@ -60,7 +64,7 @@ if( ! @ARGV ) {
 }
 
 my $config = {};
-$config_file //= File::Spec->catfile( $ENV{XDG_CONFIG_HOME}, 'caltitle.yml' );
+$config_file //= File::XDG->new( name => 'import-images', api => 1 )->lookup_config_file( 'calendar.yml' );
 if( $config_file ) {
     $config = YAML::Tiny->read( $config_file )->[0];
 }

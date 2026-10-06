@@ -49,6 +49,10 @@ has 'cal' => (
     handles => ['ua', 'logger'],
 );
 
+=head1 METHODS
+
+=cut
+
 sub _get_calendar($self, %options) {
     return Net::CalDAVTalk::Extended->new(
         user     => $options{ user }     // $self->user,
@@ -131,10 +135,27 @@ use 5.020;
 use Moo 2;
 use experimental 'signatures';
 
+=head1 NAME
+
+Net::CalDAVTalk::Extended - convenience functions and bugfixes for Net::CalDAVTalk
+
+=cut
+
 extends 'Net::CalDAVTalk';
 use XML::Spice;
 use URI::Escape qw(uri_unescape);
 use Net::CalDAV::Utils;
+
+=head1 METHODS
+
+=head2 C<< ->GetEventLinksEx >>
+
+  my $links = $cal->GetEventLinksEx( after => '...', before => '...' );
+
+Allows filtering for events within a time range without truncating
+the C<before> and C<after> values to whole days.
+
+=cut
 
 sub GetEventLinksEx {
   my ($Self, $calendarId, %Args) = @_;
@@ -181,6 +202,14 @@ sub GetEventLinksEx {
   }
   return \%Links;
 }
+
+=head2 C<< ->GetEventsEx >>
+
+Like C<< ->GetEvents >> but expands all recurrences to the actual timespan
+instead of leaving that to the calling client. This requires RFC 4791
+support by the CalDAV server.
+
+=cut
 
 # Copied from Net::CalDAVTalk, because we need to create a C:expand element
 sub GetEventsEx($cal, $calendar, %Args) {
