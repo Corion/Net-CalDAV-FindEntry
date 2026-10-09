@@ -22,6 +22,7 @@ requires:
   Carp: '0'
   Exporter: '5'
   File::Spec: '0'
+  File::XDG: '0'
   Getopt::Long: '0'
   Moo: '2'
   Net::CalDAVTalk: '0'
