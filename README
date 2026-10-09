@@ -1,5 +1,10 @@
 Net::CalDAV::FindEntry - find calendar entries overlapping a timespan
 
+SYNOPSIS
+NAME
+
+Net::CalDAVTalk::Extended - convenience functions and bugfixes for Net::CalDAVTalk
+
 
 This document describes version 0.01.
 
@@ -22,12 +27,29 @@ Should you wish to install this module manually, the procedure is
   make install
 
 
+REPOSITORY
+
+The public repository of this module is
+L<https://github.com/Corion/Net-CalDAV-FindEntry>.
+
+SUPPORT
+
+The public support forum of this module is L<https://perlmonks.org/>.
 
 
 
+BUG TRACKER
+
+Please report bugs in this module via the Github bug queue at
+L<https://github.com/Corion/Net-CalDAV-FindEntry/issues>
 
 
 
+AUTHOR
 
+Max Maischein C<corion@cpan.org>
 
+LICENSE
+
+This module is released under the same terms as Perl itself.
 

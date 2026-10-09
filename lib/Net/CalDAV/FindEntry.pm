@@ -299,3 +299,28 @@ sub GetEventsEx($cal, $calendar, %Args) {
 }
 
 1;
+
+=head1 REPOSITORY
+
+The public repository of this module is
+L<https://github.com/Corion/Net-CalDAV-FindEntry>.
+
+=head1 SUPPORT
+
+The public support forum of this module is L<https://perlmonks.org/>.
+
+=head1 BUG TRACKER
+
+Please report bugs in this module via the Github bug queue at
+L<https://github.com/Corion/Net-CalDAV-FindEntry/issues>
+
+
+=head1 AUTHOR
+
+Max Maischein C<corion@cpan.org>
+
+=head1 LICENSE
+
+This module is released under the same terms as Perl itself.
+
+=cut
